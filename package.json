@@ -1,0 +1,11 @@
+{
+  "devDependencies": {
+    "@notionhq/client": "^1.0.4",
+    "@types/node": "^18.0.0",
+    "notion-client": "^6.12.9"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "toad-scheduler": "^1.6.1"
+  }
+}
