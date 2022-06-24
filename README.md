@@ -1,4 +1,4 @@
-![my badge](https://badgen.net/badge/state/BETA/orange?icon=github)
+![my badge](https://badgen.net/badge/state/BETA/orange?icon=github&scale=2)
 
 
 # jta-notion-automations
