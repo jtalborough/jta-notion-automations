@@ -9,6 +9,7 @@ jobs:
   add-to-project:
     name: Add issue to project
     runs-on: ubuntu-latest
+    environment: JTA
     steps:
       - uses: actions/add-to-project@main
         with:
