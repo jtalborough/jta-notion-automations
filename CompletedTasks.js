@@ -23,8 +23,7 @@ async function update()
           select: {
             equals: 'Done'
           }
-    }
-  });
+    }});
 
   let parsedVar = JSON.parse(JSON.stringify(response));
   console.log(parsedVar);

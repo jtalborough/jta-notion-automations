@@ -1,5 +1,5 @@
 
-var tasksProcess = require( './test.js');
+var tasksProcess = require( './CompletedTasks.js');
 tasksProcess.update()
 setInterval(tasksProcess.update, 300000)
 
