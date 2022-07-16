@@ -1,4 +1,4 @@
-const TasksDbId = 'a3b073d5b30d48089bd9eb62ed180e15'
+const TasksDbId = '34c6376362f14537b4a63acc7953b2e0'
 const updatesDbId  = 'df6ae9e608054bc19a6b0aaa9fdbdf2c';
 require('dotenv').config({ path: __dirname + '/.env'});
 
@@ -28,23 +28,24 @@ async function update()
   let parsedVar = JSON.parse(JSON.stringify(response));
   console.log(parsedVar);
   let test = parsedVar.results;
+  // console.log(JSON.stringify(test[0]));
   test.forEach(element => {
    	// let element = test[0]; 
-
+	   
       let id = element.id;
       //element.properties.Task.title[0].text.content
-      let project = element.properties.Project.relation;
+      let area = element.properties.Area.relation;
       console.log(JSON.stringify('ID: \'' + id+ '\''));
       //console.log(JSON.stringify('TITLE: ' + title));
-      console.log('Project: ' + JSON.stringify(project));
-	  if(element.properties.Task.title[0] == null)
+      console.log('Project: ' + JSON.stringify(area));
+	  if(element.properties.Name.title[0] == null)
 	  {
 		
 		ArchivePage(id);
 	  }
 	  else 
 	  {
-	  	CreateUpdate(id, element.properties.Task.title[0].text.content, project);
+	  	CreateUpdate(id, element.properties.Name.title[0].text.content, area);
 	 	 ArchivePage(id);
 	  }
    
@@ -71,14 +72,14 @@ function CreateUpdate(pageId, pageTitle, projects) {
 	   		Name:{
 		   		title: [{
 			   		text: {
-				 		content: 'Complete: ' + pageTitle,
+				 		content: 'Completed: ' + pageTitle,
 			   			},
 			 		},
 		   		],
 		 	},
 		 	Type: {
 		   		select: {
-			 	name: 'Completed Task.'
+			 	name: 'Completed Project.'
 		   		}
 		 	}
 			
