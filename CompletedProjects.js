@@ -79,7 +79,7 @@ function CreateUpdate(pageId, pageTitle, projects) {
 		 	},
 		 	Type: {
 		   		select: {
-			 	name: 'Completed Project.'
+			 	name: 'Completed Project'
 		   		}
 		 	}
 			

@@ -7,12 +7,16 @@ const { Client } = require('@notionhq/client');
 const { assert } = require('console');
 var tasksCreated = null; 
 const notion = new Client({ auth: process.env.NOTION_ACCESS_TOKEN  });
-var tc =  TasksCreated();
-console.log(tc);
+Update()
+async function Update ()
+{
+	const tc =  await TasksCreated();
+	console.log(tc);
+}
+
 
 async function TasksCreated()
 {
-	await new Promise(r => setTimeout(r, 1000));
 	try 
 	{
 	const dateOb = new Date();
