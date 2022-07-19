@@ -8,8 +8,8 @@ jobs:
     steps:
       - checkout
       - run: ssh -oStrictHostKeyChecking=no -v $USER@$IP 
-        "cd jta-notion-automations"
-        "./deploy.sh"
+      - run: cd jta-notion-automations
+      - run: ./deploy.sh
 
 # Orchestrate our job run sequence
 workflows:
