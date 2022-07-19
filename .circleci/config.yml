@@ -7,9 +7,10 @@ jobs:
       - image: arvindr226/alpine-ssh
     steps:
       - checkout
-      - run: ssh -oStrictHostKeyChecking=no -v $USER@$IP 
-      - run: cd jta-notion-automations
-      - run: ./deploy.sh
+      - run: |
+          ssh -oStrictHostKeyChecking=no -v $USER@$IP 
+          cd jta-notion-automations
+          ./deploy.sh
 
 # Orchestrate our job run sequence
 workflows:
