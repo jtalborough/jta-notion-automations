@@ -21,7 +21,7 @@ async function update()
     filter: {
           property: 'Status',
           select: {
-            equals: 'Done'
+            equals: 'Dropped'
           }
     }});
 
@@ -71,14 +71,14 @@ function CreateUpdate(pageId, pageTitle, projects) {
 	   		Name:{
 		   		title: [{
 			   		text: {
-				 		content: 'Complete: ' + pageTitle,
+				 		content: 'Dropped: ' + pageTitle,
 			   			},
 			 		},
 		   		],
 		 	},
 		 	Type: {
 		   		select: {
-			 	name: 'Completed Task'
+			 	name: 'Dropped Task'
 		   		}
 		 	}
 			
