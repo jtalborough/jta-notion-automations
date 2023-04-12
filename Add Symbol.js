@@ -1,56 +1,56 @@
-const TasksDbId = '34c6376362f14537b4a63acc7953b2e0'
+const transactionsDbId = 'a3b073d5b30d48089bd9eb62ed180e15';
 const updatesDbId  = 'df6ae9e608054bc19a6b0aaa9fdbdf2c';
 require('dotenv').config({ path: __dirname + '/.env'});
 
 console.log(__dirname);
 console.log(process.env);
+
+//for debuging 
 //console.log(process.env.NOTION_ACCESS_TOKEN);
 //import { env } from "process";
-const { Client } = require('@notionhq/client');
 
+
+const { Client } = require('@notionhq/client');
 const notion = new Client({ auth: process.env.NOTION_ACCESS_TOKEN  });
+update();
 
 async function update()
 {
 	try 
 	{
-  	const databaseId = TasksDbId;
+  	const databaseId = transactionsDbId;
   	const response = 
     await notion.databases.query({
     database_id: databaseId,
-    filter: {
-          property: 'Status',
-          select: {
-            equals: 'Done'
-          }
-    }});
+
+});
 
   let parsedVar = JSON.parse(JSON.stringify(response));
   console.log(parsedVar);
   let test = parsedVar.results;
-  // console.log(JSON.stringify(test[0]));
-  test.forEach(element => {
-   	// let element = test[0]; 
-	   
+  // test.forEach(element => {
+   	let element = test[0]; 
+
       let id = element.id;
       //element.properties.Task.title[0].text.content
-      let area = element.properties.Area.relation;
+      let project = element.properties.Project.relation;
       console.log(JSON.stringify('ID: \'' + id+ '\''));
-      //console.log(JSON.stringify('TITLE: ' + title));
-      console.log('Project: ' + JSON.stringify(area));
-	  if(element.properties.Name.title[0] == null)
+      console.log(JSON.stringify('TITLE: ' + title));
+      console.log('Project: ' + JSON.stringify(project));
+	  if(element.properties.Task.title[0] == null)
 	  {
+		
 		ArchivePage(id);
 	  }
 	  else 
 	  {
-	  	CreateUpdate(id, element.properties.Name.title[0].text.content, area);
+	  	CreateUpdate(id, element.properties.Task.title[0].text.content, project);
 	 	 ArchivePage(id);
 	  }
    
 
 
-  	});
+  	// });
 	}
   catch (error)
   {
@@ -71,14 +71,14 @@ function CreateUpdate(pageId, pageTitle, projects) {
 	   		Name:{
 		   		title: [{
 			   		text: {
-				 		content: 'Completed: ' + pageTitle,
+				 		content: 'Complete: ' + pageTitle,
 			   			},
 			 		},
 		   		],
 		 	},
 		 	Type: {
 		   		select: {
-			 	name: 'Completed Project.'
+			 	name: 'Completed Task'
 		   		}
 		 	}
 			
